@@ -1,7 +1,7 @@
 ARG NODE_VERSION=6
 FROM node:${NODE_VERSION}
 
-ENV USER_ID=1000 USER_GID=1000
+ENV USER_ID=1001 USER_GID=1001
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
