@@ -1,7 +1,7 @@
 ARG NODE_VERSION=6
 FROM node:${NODE_VERSION}
 
-ENV USER=node-red USER_ID=1001 USER_GID=1001
+#ENV USER=node-red USER_ID=1001 USER_GID=1001
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
@@ -12,12 +12,12 @@ RUN mkdir /data
 WORKDIR /usr/src/node-red
 
 # Add node-red user so we aren't running as root.
-RUN groupadd --gid "${USER_GID}" "${USER}" \
-    && useradd --home-dir /usr/src/node-red --uid ${USER_ID} --gid ${USER_GID} --no-create-home ${USER} \
-    && chown -R node-red:node-red /data \
-    && chown -R node-red:node-red /usr/src/node-red
+#RUN groupadd --gid "${USER_GID}" "${USER}" \
+#    && useradd --home-dir /usr/src/node-red --uid ${USER_ID} --gid ${USER_GID} --no-create-home ${USER} \
+#    && chown -R node-red:node-red /data \
+#    && chown -R node-red:node-red /usr/src/node-red
 
-USER node-red
+#USER node-red
 
 # package.json contains Node-RED NPM module and node dependencies
 COPY package.json /usr/src/node-red/
