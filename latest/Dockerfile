@@ -13,8 +13,8 @@ WORKDIR /usr/src/node-red
 
 # Add node-red user so we aren't running as root.
 RUN useradd --home-dir /usr/src/node-red --uid ${USER_ID} --gid ${USER_GID} --no-create-home ${USER} \
-    && chown -R node-red:node-red /data \
-    && chown -R node-red:node-red /usr/src/node-red
+    && chown -R ${USER}:${USER_GID} /data \
+    && chown -R ${USER}:${USER_GID} /usr/src/node-red
 
 USER ${USER}
 
