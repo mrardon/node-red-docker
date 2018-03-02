@@ -1,6 +1,8 @@
 ARG NODE_VERSION=6
 FROM node:${NODE_VERSION}
 
+ENV USER_ID=1000 USER_GID=1000
+
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
 
@@ -10,7 +12,7 @@ RUN mkdir /data
 WORKDIR /usr/src/node-red
 
 # Add node-red user so we aren't running as root.
-RUN useradd --home-dir /usr/src/node-red --no-create-home node-red \
+RUN useradd --home-dir /usr/src/node-red --uid ${USER_ID} --gid ${USER_GID} --no-create-home node-red \
     && chown -R node-red:node-red /data \
     && chown -R node-red:node-red /usr/src/node-red
 
